@@ -4,13 +4,33 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Random;
 
 public class Config {
     private MySettings ustawienia = new MySettings();
 
+    public int obliczZPliku() {
+        int result;
+
+        if (ustawienia.getDzialanie().equals('+')) {
+            return result = ustawienia.getZakres_liczby_1() + ustawienia.getZakres_liczby_2();
+        } else if (ustawienia.getDzialanie().equals('-')) {
+            return result = ustawienia.getZakres_liczby_1() - ustawienia.getZakres_liczby_2();
+        } else if (ustawienia.getDzialanie().equals('*')) {
+            return result = ustawienia.getZakres_liczby_1() * ustawienia.getZakres_liczby_2();
+        } else if (ustawienia.getDzialanie().equals('/')) {
+            if (ustawienia.getZakres_liczby_1() == 0 || ustawienia.getZakres_liczby_2() == 0) {
+                return 0;
+            }
+            return result = ustawienia.getZakres_liczby_1() / ustawienia.getZakres_liczby_2();
+        }
+
+        return 0;
+
+    }
+
 
     public void odczytajPlik() {
+
         try (BufferedReader reader = new BufferedReader(new FileReader("config.txt"))) {
             for (int i = 0; i < 4; i++) {
                 String[] kolumny = reader.readLine().split("=");
@@ -34,6 +54,7 @@ public class Config {
             e.printStackTrace();
         }
     }
+
     public void wyswietlWKonsoli(String sciezkaDoPliku) throws IOException {
         FileReader fileReader = new FileReader(sciezkaDoPliku);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -43,47 +64,15 @@ public class Config {
             System.out.println(text);
 
             text = bufferedReader.readLine();
-        } while(text != null);
+        } while (text != null);
 
         bufferedReader.close();
     }
 
-    Random rnd = new Random();
-    public void losujDzialanie() {
-
-        char[] losuj = new char[]{'+', '-', '*', '/'};
-        int wylosowana = rnd.nextInt(losuj.length);
-        char wylosowany = losuj[wylosowana];
-        System.out.println(wylosowany);
+    public void wyswietl() {
+        System.out.println(ustawienia.getDzialanie());
+        System.out.println(ustawienia.getZakres_liczby_1());
+        System.out.println(ustawienia.getZakres_liczby_2());
     }
 
-    public void losujLiczby(){
-        int liczba1=rnd.nextInt(100);
-        System.out.println(liczba1);
-        int liczba2=rnd.nextInt(100);
-        System.out.println(liczba2);
-    }
-
-    public int oblicz(int liczba1, int liczba2){
-        int result;
-        char[] losuj = new char[]{'+', '-', '*', '/'};
-        int wylosowana = rnd.nextInt(losuj.length);
-        char wylosowany = losuj[wylosowana];
-        if (wylosowany=='+'){
-            return result=liczba1+liczba2;
-        }else if (wylosowany=='-'){
-            return result=liczba1-liczba2;
-        }else if (wylosowany=='*'){
-            return result=liczba1*liczba2;
-        }else if (wylosowany=='/'){
-
-            return result=liczba1/liczba2;
-        }
-        return 0;
-    }
-
-    //dopisac wyswietlanie z konfigu-ok
-    //dopiac obliczenia zadan i wyswietlanie w konsoli
-    //punkty za odpowiedzi
-    //statystyki
 }
