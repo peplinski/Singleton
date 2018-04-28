@@ -34,6 +34,19 @@ public class Config {
             e.printStackTrace();
         }
     }
+    public void wyswietlWKonsoli(String sciezkaDoPliku) throws IOException {
+        FileReader fileReader = new FileReader(sciezkaDoPliku);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        String text = bufferedReader.readLine();
+        do {
+            System.out.println(text);
+
+            text = bufferedReader.readLine();
+        } while(text != null);
+
+        bufferedReader.close();
+    }
 
     Random rnd = new Random();
     public void losujDzialanie() {
@@ -41,14 +54,35 @@ public class Config {
         char[] losuj = new char[]{'+', '-', '*', '/'};
         int wylosowana = rnd.nextInt(losuj.length);
         char wylosowany = losuj[wylosowana];
+        System.out.println(wylosowany);
     }
 
     public void losujLiczby(){
         int liczba1=rnd.nextInt(100);
+        System.out.println(liczba1);
         int liczba2=rnd.nextInt(100);
+        System.out.println(liczba2);
     }
 
-    //dopisac wyswietlanie z konfigu
+    public int oblicz(int liczba1, int liczba2){
+        int result;
+        char[] losuj = new char[]{'+', '-', '*', '/'};
+        int wylosowana = rnd.nextInt(losuj.length);
+        char wylosowany = losuj[wylosowana];
+        if (wylosowany=='+'){
+            return result=liczba1+liczba2;
+        }else if (wylosowany=='-'){
+            return result=liczba1-liczba2;
+        }else if (wylosowany=='*'){
+            return result=liczba1*liczba2;
+        }else if (wylosowany=='/'){
+
+            return result=liczba1/liczba2;
+        }
+        return 0;
+    }
+
+    //dopisac wyswietlanie z konfigu-ok
     //dopiac obliczenia zadan i wyswietlanie w konsoli
     //punkty za odpowiedzi
     //statystyki

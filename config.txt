@@ -1,0 +1,4 @@
+Zakres_liczby_1=1
+Zakres_liczby_2=1
+dzialanie=+
+ileRund=2
