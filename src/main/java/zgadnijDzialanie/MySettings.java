@@ -1,41 +1,49 @@
 package zgadnijDzialanie;
 
-public class MySettings {
-    private int zakres_liczby_1;
-    private int zakres_liczby_2;
-    private char[] dzialanie;
-    private int ileRund;
+public enum MySettings {
+    INSTANCE(10, 3, 100, "+-/*");//, INSTANCE_HARD(100, 1000000, 100000, "/");
 
+    private int numberOfRounds;
+    private int range1;
+    private int range2;
+    private String signs;
 
-    public int getIleRund() {
-        return ileRund;
+    MySettings(int numberOfRounds, int range1, int range2, String signs) {
+        this.numberOfRounds = numberOfRounds;
+        this.range1 = range1;
+        this.range2 = range2;
+        this.signs = signs;
     }
 
-    public void setIleRund(int ileRund) {
-        this.ileRund = ileRund;
+    public int getNumberOfRounds() {
+        return numberOfRounds;
     }
 
-    public int getZakres_liczby_1() {
-        return zakres_liczby_1;
+    public void setNumberOfRounds(int numberOfRounds) {
+        this.numberOfRounds = numberOfRounds;
     }
 
-    public void setZakres_liczby_1(int zakres_liczby_1) {
-        this.zakres_liczby_1 = zakres_liczby_1;
+    public int getRange1() {
+        return range1;
     }
 
-    public int getZakres_liczby_2() {
-        return zakres_liczby_2;
+    public void setRange1(int range1) {
+        this.range1 = range1;
     }
 
-    public void setZakres_liczby_2(int zakres_liczby_2) {
-        this.zakres_liczby_2 = zakres_liczby_2;
+    public int getRange2() {
+        return range2;
     }
 
-    public char[] getDzialanie() {
-        return dzialanie;
+    public void setRange2(int range2) {
+        this.range2 = range2;
     }
 
-    public void setDzialanie(char[] dzialanie) {
-        this.dzialanie = dzialanie;
+    public String getSigns() {
+        return signs;
+    }
+
+    public void setSigns(String signs) {
+        this.signs = signs;
     }
 }

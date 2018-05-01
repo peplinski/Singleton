@@ -1,4 +1,4 @@
-Zakres_liczby_1=1
-Zakres_liczby_2=1
-dzialanie=+
-ileRund=2
+no1=2
+no2=27
+sign=*
+rounds=2
